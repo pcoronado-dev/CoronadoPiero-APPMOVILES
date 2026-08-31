@@ -107,10 +107,9 @@ fun main(){
 
     val fechaCompra = Calendar.getInstance()
     val formato = SimpleDateFormat("dd/MM/yyyy")
-    
+
     var monto = totalPagar
 
-    //Se añadio el for para que el monto pendiente se actualizara
     for (i in 1..cuotas) {
 
         val montoActual = monto
@@ -120,6 +119,8 @@ fun main(){
         if (monto < 0) {
             monto = 0.0
         }
+
+        val resta = monto //Se añadio el dato de resta para corregir el anterior error
 
         val fechaCuota = fechaCompra.clone() as Calendar
         fechaCuota.add(Calendar.MONTH, i)
@@ -132,6 +133,7 @@ fun main(){
                 fecha,
                 montoActual,
                 cuotaMensual,
+                resta
             )
         )
     }
