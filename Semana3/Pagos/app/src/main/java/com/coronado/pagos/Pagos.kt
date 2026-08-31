@@ -20,5 +20,17 @@ fun main(){
 
     print("Número de cuotas (6, 12 o 24): ")
     val cuotas = readln().toInt()
-    
+
+    // Determinamos el interés según el número de cuotas
+    val porcentajeInteres = when (cuotas) {
+        6 -> 0.20
+        12 -> 0.40
+        24 -> 0.60
+        else -> {
+            println()
+            println("ERROR: Solo se permiten 6, 12 o 24 cuotas.")
+            return
+        }
+    }
+
 }
