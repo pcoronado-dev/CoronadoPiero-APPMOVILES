@@ -58,7 +58,7 @@ fun main(){
         return
     }
 
-    val montoPendiente = montoInicial - pagoInicial
+    var montoPendiente = montoInicial - pagoInicial
 
     val interes = montoPendiente * porcentajeInteres
 
@@ -97,7 +97,7 @@ fun main(){
         "%-5s %-15s %-15s %-15s %-15s".format(
             "N",
             "FECHA",
-            "MONTO",
+            "MONTO PEND.",
             "P.MENSUAL",
             "RESTA DEL PAGO"
         )
@@ -107,15 +107,18 @@ fun main(){
 
     val fechaCompra = Calendar.getInstance()
     val formato = SimpleDateFormat("dd/MM/yyyy")
+    
+    var monto = totalPagar
 
-    var resta = totalPagar
-
+    //Se añadio el for para que el monto pendiente se actualizara
     for (i in 1..cuotas) {
 
-        resta -= cuotaMensual
+        val montoActual = monto
 
-        if (resta < 0) {
-            resta = 0.0
+        monto -= cuotaMensual
+
+        if (monto < 0) {
+            monto = 0.0
         }
 
         val fechaCuota = fechaCompra.clone() as Calendar
@@ -127,9 +130,8 @@ fun main(){
             "%-5d %-15s S/ %-12.2f S/ %-12.2f S/ %-12.2f".format(
                 i,
                 fecha,
-                totalPagar,
+                montoActual,
                 cuotaMensual,
-                resta
             )
         )
     }
