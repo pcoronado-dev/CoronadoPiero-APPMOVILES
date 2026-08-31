@@ -32,5 +32,36 @@ fun main(){
             return
         }
     }
+    // Se agrego Validaciones y Calculos del pago
+    if (precio <= 0) {
+        println("ERROR: El precio debe ser mayor que 0.")
+        return
+    }
+
+    if (cantidad <= 0) {
+        println("ERROR: La cantidad debe ser mayor que 0.")
+        return
+    }
+
+    if (pagoInicial < 0) {
+        println("ERROR: El pago inicial no puede ser negativo.")
+        return
+    }
+
+    val montoInicial = precio * cantidad
+
+    if (pagoInicial > montoInicial) {
+        println("ERROR: El pago inicial supera el monto de compra.")
+        return
+    }
+
+    val montoPendiente = montoInicial - pagoInicial
+
+    val interes = montoPendiente * porcentajeInteres
+
+    val totalPagar = montoPendiente + interes
+
+    val cuotaMensual = totalPagar / cuotas
+
 
 }
