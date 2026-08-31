@@ -1,5 +1,8 @@
 package com.coronado.pagos
 
+import java.util.Calendar
+import java.text.SimpleDateFormat
+
 fun main(){
 
     println("======================================")
@@ -87,7 +90,51 @@ fun main(){
     println("Total a pagar      : S/ %.2f".format(totalPagar))
     println("Cuota mensual      : S/ %.2f".format(cuotaMensual))
 
-    println("======================================")
+    println("-----------------------------------------------------------------------")
+
+    //Se modifico el resultado para que se vea de forma horizontal y se añadio la fecha(automatica por el sistema)
+    println(
+        "%-5s %-15s %-15s %-15s %-15s".format(
+            "N",
+            "FECHA",
+            "MONTO",
+            "P.MENSUAL",
+            "RESTA DEL PAGO"
+        )
+    )
+
+    println("-----------------------------------------------------------------------")
+
+    val fechaCompra = Calendar.getInstance()
+    val formato = SimpleDateFormat("dd/MM/yyyy")
+
+    var resta = totalPagar
+
+    for (i in 1..cuotas) {
+
+        resta -= cuotaMensual
+
+        if (resta < 0) {
+            resta = 0.0
+        }
+
+        val fechaCuota = fechaCompra.clone() as Calendar
+        fechaCuota.add(Calendar.MONTH, i)
+
+        val fecha = formato.format(fechaCuota.time)
+
+        println(
+            "%-5d %-15s S/ %-12.2f S/ %-12.2f S/ %-12.2f".format(
+                i,
+                fecha,
+                totalPagar,
+                cuotaMensual,
+                resta
+            )
+        )
+    }
+
+    println("=======================================================================")
 
 
 }
