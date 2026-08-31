@@ -18,7 +18,7 @@ fun main(){
     print("Pago inicial: S/ ")
     val pagoInicial = readln().toDouble()
 
-    print("Número de cuotas (6, 12 o 24): ")
+    print("Numero de cuotas (6, 12 o 24): ")
     val cuotas = readln().toInt()
 
     // Determinamos el interés según el número de cuotas
@@ -62,6 +62,32 @@ fun main(){
     val totalPagar = montoPendiente + interes
 
     val cuotaMensual = totalPagar / cuotas
+
+    println()
+    println("======================================")
+    println("             RESULTADOS")
+    println("======================================")
+
+    println("Producto           : $nombre")
+    println("Precio             : S/ %.2f".format(precio))
+    println("Cantidad           : $cantidad")
+    println("Monto inicial      : S/ %.2f".format(montoInicial))
+
+    println("--------------------------------------")
+
+    println("Pago inicial       : S/ %.2f".format(pagoInicial))
+    println("Monto pendiente    : S/ %.2f".format(montoPendiente))
+
+    println("Numero de cuotas   : $cuotas")
+    println("Interes            : %.0f%%".format(porcentajeInteres * 100))
+    println("Interes generado   : S/ %.2f".format(interes))
+
+    println("--------------------------------------")
+
+    println("Total a pagar      : S/ %.2f".format(totalPagar))
+    println("Cuota mensual      : S/ %.2f".format(cuotaMensual))
+
+    println("======================================")
 
 
 }
