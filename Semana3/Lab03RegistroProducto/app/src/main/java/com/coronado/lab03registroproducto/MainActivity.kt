@@ -53,6 +53,7 @@ fun PantallaRegistro(modifier: Modifier = Modifier) {
     var precio by remember { mutableStateOf("") }
     var cantidad by remember { mutableStateOf("") }
     var mostrarResumen by remember { mutableStateOf(false) }
+    var mensajeError by remember { mutableStateOf("") }
 
     Column(
         modifier = modifier
@@ -114,7 +115,17 @@ fun PantallaRegistro(modifier: Modifier = Modifier) {
 
         Button(
             onClick = {
-                mostrarResumen = true
+
+                if (nombre.isBlank() || precio.isBlank() || cantidad.isBlank()) {
+
+                    mensajeError = "Completa todos los campos"
+                    mostrarResumen = false
+
+                } else {
+
+                    mensajeError = ""
+                    mostrarResumen = true
+                }
             },
             modifier = Modifier.fillMaxWidth()
         ) {
