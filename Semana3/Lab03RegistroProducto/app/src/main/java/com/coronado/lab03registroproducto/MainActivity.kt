@@ -134,6 +134,16 @@ fun PantallaRegistro(modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(24.dp))
 
+        if (mensajeError.isNotEmpty()) {
+
+            Text(
+                text = mensajeError,
+                color = Color.Red
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+        }
+
         if (mostrarResumen) {
 
             val precioNum = precio.toDoubleOrNull() ?: 0.0
